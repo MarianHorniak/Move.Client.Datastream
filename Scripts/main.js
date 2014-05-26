@@ -64,6 +64,7 @@
     },
 
     showConfirm: function (message, title, okCallback, cancelCallback) {
+        var ret = true;
         if (navigator.notification) {
             var _callback = function (btn) {
                 if (btn === 1) {
@@ -71,6 +72,7 @@
                 }
                 else {
                     if (cancelCallback) cancelCallback();
+                    ret = false;
                 }
             }
             navigator.notification.confirm(message, _callback, title, 'OK,Cancel');
@@ -80,8 +82,11 @@
             }
             else {
                 if (cancelCallback) cancelCallback();
+                ret = false;
             }
         }
+
+        return ret;
     },
     playNew: function(){
         if (app.mediaNew) {
@@ -209,6 +214,7 @@
     submenuHide: function () {
         $('#btnactionsadd').removeClass("selected");
         $('#btnactions').removeClass("selected");
+        $('#btnpurchase').removeClass("selected");
         $('#divsubmenu').hide(100);
     },
     home: function (refresh) {
@@ -237,6 +243,7 @@
             switch (p) {
                 case "jp": page = new JpView(); this.homePage = page; break;
                 case "actions": page = new ActionsView(); break;
+                case "purchase": page = new PurchaseView(); break;
                 case "actionsadd": page = new ActionsAddView(); break;
                 case "selectjp": page = new SelectJpView(); break;
                 case "map": page = new MapView(); break;

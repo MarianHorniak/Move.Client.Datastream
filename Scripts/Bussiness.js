@@ -5,6 +5,8 @@
     roadStatusActions: [{ value: "Town", title: "Mesto" }, { value: "OutofTown", title: "Mimo mesta" }, { value: "Highway", title: "Dialnica" }, { value: "Terrain1", title: "Terén 1" }, { value: "Terrain2", title: "Terén 2" }],
  
     beforeChangeState: function (action) {
+
+        var ret = true;
         var jp = Service.currentJP();
         var jpk = Service.currentJPK(jp);
         switch (action) {
@@ -16,7 +18,11 @@
                 }
                 break;
             case "JPPause": break;
-            case "JPFinish": break;
+            case "JPFinish":
+                var finishTrue = app.showConfirm("Ukončiť jazdný plán?", "Upozornenie", null, null);
+                if (!finishTrue)
+                    ret = false;
+                break;
             case "JPKActive": break;
             case "JPKFinish":
                 if (jpk) {
@@ -51,7 +57,11 @@
                 break;
 
         }
+
+        //navratova hodnota
+        return ret;
     },
+
     afterSelectJP: function () {
         app.setJPKSpecial();
         app.setHeader();
@@ -71,7 +81,7 @@
 
 
         //davame alert aj so zvukom !
-        var content = Translator.Translate("Nastavte prosím stav tachometra.") + "<br/><button id=\"btnSetKM\"  data-route=\"actionsadd\" style=\"background-color:black;\" class=\"textnoicon\">Nastaviť tachometer</button>";
+        var content = Translator.Translate("Nastavte prosím stav tachometra.") + "<br/><button id=\"btnSetKM\"  data-route=\"actionsadd\" style=\"background-color:black;\" class=\"icon ico_submit\">&nbsp;</button>";
         app.showNewsComplete(Translator.Translate("Stav tachometra"), MediaInternal.getNewsSoundFile("SetTacho"), "", 10000, content);
     },
 
@@ -134,14 +144,14 @@
 
         if (speed > 0 && jp.CarStatus=="Stop")
         {
-            //davame alert aj so zvukom !
-            var content = Translator.Translate("Zdá sa, že sa pohybujete. Nastavte prosím status jazda.") + "<br/><button id=\"btnSetStart\"  data-route=\"actions\" style=\"background-color:black;\" class=\"textnoicon\">Nastaviť status</button>";
+
+            var content = Translator.Translate("Zdá sa, že sa pohybujete. Nastavte prosím status jazda.") + "<br/><button id=\"btnSetStart\"  data-route=\"actions\" style=\"background-color:black;\" class=\"icon ico_submit\">&nbsp;</button>";
             app.showNewsComplete(Translator.Translate("Status jazda"), MediaInternal.getNewsSoundFile("SetStatusRun"), "", 10000, content);
             return;
         }
         if ((speed > 60 && jp.RoadStatus == "Town") || (speed > 100 && jp.RoadStatus == "OutofTown")) {
             //davame alert aj so zvukom !
-            var content = Translator.Translate("Vaša rýchlosť nezodpovedá typu cesty. Prosím skontrolujte a prípadne prepnite typ cesty.") + "<br/><button id=\"btnSetRoadStatus\"  data-route=\"actions\" style=\"background-color:black;\" class=\"textnoicon\">Nastaviť typ cesty</button>";
+            var content = Translator.Translate("Vaša rýchlosť nezodpovedá typu cesty. Prosím skontrolujte a prípadne prepnite typ cesty.") + "<br/><button id=\"btnSetRoadStatus\"  data-route=\"actions\" style=\"background-color:black;\" class=\"icon ico_submit\">&nbsp;</button>";
             app.showNewsComplete(Translator.Translate("Typ cesty"), MediaInternal.getNewsSoundFile("SetStatusRoadStatus"), "", 10000, content);
             return;
         }

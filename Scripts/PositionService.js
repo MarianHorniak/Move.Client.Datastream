@@ -103,9 +103,9 @@ var PositionService = {
                     Globals.Position_Lat = PositionService.lat;
                     Globals.Position_Lng = PositionService.lng;
 
-                    //neposielame vzdy, iba podla nastavenia 
-                    var differenceSec = (Date.now() - Globals.lastGEOSend) / 1000;
-                    if (differenceSec < Globals.GEOsendFreqSec) return;
+                    ////TARAZ VZDY neposielame vzdy, iba podla nastavenia 
+                    //var differenceSec = (Date.now() - Globals.lastGEOSend) / 1000;
+                    //if (differenceSec < Globals.GEOsendFreqSec) return;
 
                     //zistime rozdiel ! 
                     var Distancekm = Geo.getDistanceFromLatLonInKm(Globals.Position_LatPrev, Globals.Position_LngPrev, Globals.Position_Lat, Globals.Position_Lng);

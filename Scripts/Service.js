@@ -301,11 +301,18 @@
         return Service.state;
     },
     saveState: function (action) {
+        var Saved = true;
+
         if (action) {
-            Bussiness.beforeChangeState(action);
+            Saved = Bussiness.beforeChangeState(action);
+            if (!Saved) {
+                app.log("Service.postData canceled: " + action);
+                return Saved;
+            }
             Service.saveDataEvent(action);
         }
 
+        
         window.localStorage.setItem("state", JSON.stringify(Service.state));
 
         if (action) {
@@ -313,6 +320,8 @@
             app.setHeader();
             app.setFooter();
         }
+
+        return Saved;
     },
     postData: function (method, data, successDelegate, errorDelegate) {
         app.log("Service.postData: " + method);
