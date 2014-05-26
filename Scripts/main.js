@@ -215,6 +215,8 @@
         $('#btnactionsadd').removeClass("selected");
         $('#btnactions').removeClass("selected");
         $('#btnpurchase').removeClass("selected");
+        $('#btntank').removeClass("selected");
+
         $('#divsubmenu').hide(100);
     },
     home: function (refresh) {
@@ -244,6 +246,7 @@
                 case "jp": page = new JpView(); this.homePage = page; break;
                 case "actions": page = new ActionsView(); break;
                 case "purchase": page = new PurchaseView(); break;
+                case "tank": page = new TankView(); break;
                 case "actionsadd": page = new ActionsAddView(); break;
                 case "selectjp": page = new SelectJpView(); break;
                 case "map": page = new MapView(); break;

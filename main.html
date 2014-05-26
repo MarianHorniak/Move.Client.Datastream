@@ -42,6 +42,7 @@
 </div>
 <div class='submenu' id="divsubmenu" style="display:none;z-index:10000;">
     <button id="btnactionsadd" data-route="actionsadd" class="icon textnoicon">Nastavenia</button>
+    <button id="btntank" data-route="tank" class="icon textnoicon">Tankovanie</button>
     <button id="btnactions" data-route="actions" class="icon textnoicon">Jazda</button>
     <button id="btnpurchase" data-route="purchase" class="icon textnoicon">Nákup</button>
     <button id="btnmap" data-route="map" class="icon ico_map">&nbsp;</button>
@@ -130,21 +131,28 @@
 <div id="Tacho"><label>Stav tacho</label> 
       <!--<input class="inputActionValue" type="number" id="TachoPrevious" value="0" disabled />-->
       <!--<input class="inputActionValue" type="number" id="TachoCurrentCount" value="112" disabled />-->
-      <input class="inputActionValue" type="number"  id="TachoCurrent" value="0"/> km
+      <!--<input class="inputActionValue" type="number"  id="TachoCurrent" value="0"/> km-->
+     <input placeholder="Stav tacho [km]" type="number"  id="TachoCurrent" value="0"/>
       <button class="icon ico_submitActions" id="btnsetTacho">&nbsp;</button>
-  </div>
-  <div id="Petrol"><label>Tankovanie</label> 
-      <!--<input class="inputActionValue" type="number" id="PetrolPrevious" value="0" disabled />-->
-      <!--<input class="inputActionValue" type="number" id="PetrolCurrentCount" value="112" disabled />-->
-      <input class="inputActionValue" type="number" id="PetrolCurrent" value="0"/> l 
-      <input class="inputActionValue" type="number" id="PetrolMoney" value="0"/> €
-      <button class="icon ico_submitActions" id="btnsetPetrol">&nbsp;</button>
   </div>
   <div id="PetrolCount"><label>Stav paliva</label> 
       <button class="icon textnoicon" id="btnsetPetrolCount025">1/4</button>
        <button class="icon textnoicon" id="btnsetPetrolCount050">1/2</button>
        <button class="icon textnoicon" id="btnsetPetrolCount075">3/4</button>
       <button class="icon textnoicon" id="btnsetPetrolCount100">Plná</button>
+  </div>
+</script>
+
+<!-- Tank -->
+<script id="tank-tpl" type="text/x-handlebars-template">
+    <div id="tankForm"></div>
+</script>
+
+<script id="tankForm-template" type="text/x-handlebars-template">
+  <div id="Petrol"><label>Tankovanie</label> <br />
+      <input placeholder="Litrov" type="number" id="PetrolCurrent" value="0"/>
+      <input placeholder="Cena" type="number" id="PetrolMoney" value="0"/> 
+      <button class="icon ico_submit" id="btnsetPetrol">&nbsp;</button>
   </div>
 </script>
 
@@ -273,6 +281,7 @@
 <script src="Scripts/Geo.js"></script>
 <script src="Scripts/Diagnostic.js"></script>
 <script src="Scripts/PurchaseView.js"></script>
+<script src="Scripts/TankView.js"></script>
 <script src="http://maps.google.com/maps/api/js?sensor=false&callback=Map.apiOK"></script>
 </body>
 </html>
