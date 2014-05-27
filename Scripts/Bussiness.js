@@ -101,7 +101,7 @@
         try{
             
             myDec = parseFloat(valueToTransform);
-            myDec = myDec.toFixed(digitsNumber);
+            myDec = parseFloat(myDec.toFixed(digitsNumber));
         }
         catch (err) {}
         return myDec;
@@ -136,7 +136,7 @@
                 break;
             }
         
-        retDist = retDist.toFixed(2);
+        retDist = parseFloat(retDist.toFixed(2));
         retDist = Math.abs(retDist);
         return retDist;
 

@@ -78,7 +78,7 @@ var Map = {
         Map.message("Pozícia " + Map.date);
         var d = Translator.Translate('Lat') + ': ' + position.coords.latitude + '<br />' +
         Translator.Translate('Lon') + ': ' + position.coords.longitude + '<br />' +
-        Translator.Translate('Rýchlosť') + ': ' + (position.coords.speed ? position.coords.speed * 3.6 : 0) + " km/h" + '<br />' +
+        Translator.Translate('Rýchlosť') + ': ' + (position.coords.speed ? position.coords.speed * 3.6 : 0).toFixed(2) + " km/h" + '<br />' +
         Translator.Translate('Presnosť') + ': ' + position.coords.accuracy + " m" + '<br />';
 
         var ddop = "";

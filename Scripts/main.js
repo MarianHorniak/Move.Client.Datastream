@@ -378,7 +378,7 @@
         var addinfo = $('#jpInfoAdd');
         if (!addinfo) return;
         if (addinfo.length != 1) return;
-        var contentaddinfo = PositionService.speed ? PositionService.speed.toFixed(2) : 0 + " " + Globals.velocityUnit+"  ";
+        var contentaddinfo = (PositionService.speed ? PositionService.speed : 0).toFixed(2) + " " + Globals.velocityUnit+"  ";
         //contentaddinfo += Service.state.TachometerCount ? Service.state.TachometerCount + " " + Globals.distanceUnit : " ? " + " " + Globals.distanceUnit
         addinfo.html(contentaddinfo);
     },

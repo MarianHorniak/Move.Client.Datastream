@@ -105,7 +105,7 @@
 <!-- Actions -->
 <script id="actions-tpl" type="text/x-handlebars-template">
 <div class="actionsFormScroll">
-    <div id="actionsForm"></div>
+    <div class="actionsForm" id="actionsForm"></div>
 </div>
 </script>
 
@@ -124,7 +124,7 @@
 
 <!-- ActionsAdd -->
 <script id="actionsadd-tpl" type="text/x-handlebars-template">
-    <div id="actionsaddForm"></div>
+    <div class="actionsForm" id="actionsaddForm"></div>
 </script>
 
 <script id="actionsaddForm-template" type="text/x-handlebars-template">
@@ -132,7 +132,7 @@
       <!--<input class="inputActionValue" type="number" id="TachoPrevious" value="0" disabled />-->
       <!--<input class="inputActionValue" type="number" id="TachoCurrentCount" value="112" disabled />-->
       <!--<input class="inputActionValue" type="number"  id="TachoCurrent" value="0"/> km-->
-     <input placeholder="Stav tacho [km]" type="number"  id="TachoCurrent" value="0"/>
+      <input placeholder="Stav tacho [km]" type="number"  id="TachoCurrent" value="0"/>
       <button class="icon ico_submitActions" id="btnsetTacho">&nbsp;</button>
   </div>
   <div id="PetrolCount"><label>Stav paliva</label> 
@@ -145,30 +145,30 @@
 
 <!-- Tank -->
 <script id="tank-tpl" type="text/x-handlebars-template">
-    <div id="tankForm"></div>
+    <div class="actionsForm" id="tankForm"></div>
 </script>
 
 <script id="tankForm-template" type="text/x-handlebars-template">
-  <div id="Petrol"><label>Tankovanie</label> <br />
-      <input placeholder="Litrov" type="number" id="PetrolCurrent" />
-      <input placeholder="Cena" type="number" id="PetrolMoney" /> 
-      <button class="icon ico_submit" id="btnsetPetrol">&nbsp;</button>
+  <div id="Petrol">
+      <div><label>Litrov</label> <input  placeholder="Litrov" type="number" id="PetrolCurrent" /></div>
+      <div><label>Cena</label>  <input  placeholder="Cena" type="number" id="PetrolMoney" /> </div>
+      <button class="icon ico_submitActions" id="btnsetPetrol">&nbsp;</button>
   </div>
 </script>
 
 <!-- Purchase Nakup -->
 <script id="purchase-tpl" type="text/x-handlebars-template">
-    <div id="purchaseForm"></div>
+    <div class="actionsForm" id="purchaseForm"></div>
 </script>
 <script id="purchaseForm-template" type="text/x-handlebars-template">
 <div id="Purchase"> 
 
-        <input type="text" placeholder="Tovar" name="description" id="PurchaseType" />  
-        <input type="number" placeholder="Cena" name="price" id="PurchaseMoney" />
+    <div> <label>Tovar</label>   <input type="text" placeholder="Tovar" name="description" id="PurchaseType" />  </div>
+    <div> <label>Cena</label>    <input type="number" placeholder="Cena" name="price" id="PurchaseMoney" /> </div>
 
       <!--<span style="white-space:nowrap">Popis <input class="inputActionValue"  id="PurchaseType" /> </span>-->
       <!--<span style="white-space:nowrap">€      <input class="inputActionValue" type="number"  id="PurchaseMoney" value="0"/> </span>-->
-      <button class="icon ico_submit" id="btnPurchase">&nbsp;</button>
+      <button class="icon ico_submitActions" id="btnPurchase">&nbsp;</button>
   </div>
 </script>
 

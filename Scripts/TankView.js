@@ -65,7 +65,11 @@ var TankViewMethods =
             Service.state.PetrolMoney = petrolmoney;
 
             Service.saveState("EventTank");
-            app.buttonClickEffect("#btnsetPetrol");
+            //app.buttonClickEffect("#btnsetPetrol");
+            //prechod na JP
+            app.route("jp");
+
+
         },
 
 
