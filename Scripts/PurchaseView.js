@@ -51,7 +51,9 @@ var PurchaseViewMethods =
             jp.NumValue1 = PurchaseMoney;
             jp.TextValue1 = PurchaseType;
             Service.saveState("SetPurchase");
-            app.buttonClickEffect("#btnsetpurchase");
+            //app.buttonClickEffect("#btnsetpurchase");
+            //prechod na JP
+            app.route("jp");
         },
 
 
