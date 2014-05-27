@@ -101,9 +101,9 @@ var Map = {
             ddop = Translator.Translate('Addresa') + ': ' + a.City + ' ' + a.Address;
             Map.mapOut.html(d + ddop);
             Map.setMap(position);
-            PositionService.lat = position.coords.latitude;
-            PositionService.lng = position.coords.longitude;
-            PositionService.speed = position.coords.speed;
+            //PositionService.lat = position.coords.latitude;
+            //PositionService.lng = position.coords.longitude;
+            //PositionService.speed = position.coords.speed;
         });
         //'Altitude: ' + position.coords.altitude + '<br />' +
         //'Accuracy: ' + position.coords.accuracy + '<br />' +

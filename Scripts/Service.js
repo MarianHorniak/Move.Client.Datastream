@@ -266,7 +266,20 @@
     },
     trySendDataEvents: function () {
         if (Service.state.Events && Service.state.Events.length > 0) {
-            Service.postData("DataEvent", Service.state.Events[0],
+            var dataEvent = Service.state.Events[0];
+            //aj nemame adresu, tak si ju vypytame !
+            if (!dataEvent.Address) {
+                try {
+                    Map.geocode({ 'latLng': new google.maps.LatLng(PositionService.lat, PositionService.lng) }, function (a) {
+                        if (a) {
+                            dataEvent.City = a.City;
+                            dataEvent.Address = a.Address;
+                        }
+                    });
+                }
+                catch (err) { }
+            }
+            Service.postData("DataEvent", dataEvent,
                 function () {
                     try{
                         Service.state.Events.splice(0, 1);

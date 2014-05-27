@@ -17,7 +17,9 @@
                     Service.state.IdVehicle = jp.IdVehicle;
                 }
                 break;
-            case "JPPause": break;
+            case "JPPaused":
+                if(jp) jp.sta
+                break;
             case "JPFinish":
                 var finishTrue = app.showConfirm("Ukončiť jazdný plán?", "Upozornenie", null, null);
                 if (!finishTrue)
@@ -174,16 +176,18 @@
             case "UserLogin": break;
             case "JPActive": 
                 //NASTAVENIE AKCII !! bez volania DataEvent
-                if(!jp.TravelStatus)  jp.TravelStatus = "Sukromna"; //napr.
-                if(!jp.CarStatus) jp.CarStatus = "Stop"; //napr.
+                if(!jp.TravelStatus)  jp.TravelStatus = "Sukromna"; 
+                if(!jp.CarStatus) jp.CarStatus = "Run"; 
                 if (!jp.RoadStatus) jp.RoadStatus = "Town";
                 app.setHeader();
+                app.setFooter();
                 app.setJPKSpecial();
                 this.mustSetTacho(action);
                 break;
             case "JPPaused":
                 Service.disableAllActions(Service.currentJP());
                 app.setJPKSpecial();
+                app.setFooter();
                 break;
             case "JPFinish":
                 //zahodi sa jp
@@ -191,6 +195,7 @@
                 //zahodim stavy
                 Service.initializeState();
                 app.setJPKSpecial();
+                app.setFooter();
                 //idem do vyberu jp
                 app.route("selectjp");
                 this.mustSetTacho(action);

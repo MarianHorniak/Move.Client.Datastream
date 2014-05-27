@@ -67,8 +67,8 @@ var JpView = function () {
             if(jp.Status != status){
                 var action = $(this).attr("data-action");
                 var Saved = Service.saveState(action);
-                if(Saved)
-                    jp.Status = status;
+                //if(Saved)
+                //    jp.Status = status;
             }
             self.loadData();
         })
