@@ -67,6 +67,7 @@ var JpView = function () {
             if(jp.Status != status){
                 var action = $(this).attr("data-action");
                 var Saved = Service.saveState(action);
+                //musime menit status v biznise !!!!!
                 //if(Saved)
                 //    jp.Status = status;
             }

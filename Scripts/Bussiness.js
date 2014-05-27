@@ -15,17 +15,24 @@
                 if (jp)
                 {
                     Service.state.IdVehicle = jp.IdVehicle;
+                    if (jp) jp.Status = "Active";
                 }
                 break;
             case "JPPaused":
-                if(jp) jp.sta
+                if (jp)
+                    jp.Status = "Paused";
                 break;
             case "JPFinish":
                 var finishTrue = app.showConfirm("Ukončiť jazdný plán?", "Upozornenie", null, null);
                 if (!finishTrue)
                     ret = false;
+                else
+                    if (jp)
+                        jp.Status = "Finish";
                 break;
-            case "JPKActive": break;
+
+            case "JPKActive":
+                break;
             case "JPKFinish":
                 if (jpk) {
                     //console.log("have jpk for Finish: " + jpk.PK);
@@ -40,7 +47,8 @@
                 }
 
                 break;
-            case "JPKPause": break;
+            case "JPKPause":
+                break;
             case "EventGEO": break;
             case "EventBreak": break;
             case "EventChangeCarStatus": break;
