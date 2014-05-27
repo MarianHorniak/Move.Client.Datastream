@@ -92,7 +92,7 @@
 
         //davame alert aj so zvukom !
         var content = Translator.Translate("Nastavte prosím stav tachometra.") + "<br/><button id=\"btnSetKM\"  data-route=\"actionsadd\" style=\"background-color:black;\" class=\"icon ico_submit\">&nbsp;</button>";
-        app.showNewsComplete(Translator.Translate("Tachometer"), MediaInternal.getNewsSoundFile("SetTacho"), "", 100000, content);
+        app.showNewsComplete(Translator.Translate("Tachometer"), MediaInternal.getNewsSoundFile("SetTacho"), "", 10000, content);
     },
 
     getDecimal: function (valueToTransform, digitsNumber)
