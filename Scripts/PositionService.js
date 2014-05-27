@@ -59,47 +59,29 @@ var PositionService = {
         
         PositionService.startPool();
     },
-    getCity: function () {
-
-        if (!PositionService.city)
-            PositionService.refreshAddress();
-        return PositionService.city;
-    },
-    getaddress: function () {
-
-        if (!PositionService.address)
-            PositionService.refreshAddress();
-        return PositionService.address;
-    },
-    refreshAddress: function () {
+    refreshAddress: function (callback) {
         try {
-            Map.geocode({ 'latLng': new google.maps.LatLng(PositionService.lat, PositionService.lng) }, function (a) {
+            Map.geocode(PositionService.lat, PositionService.lng, function (a) {
                 if (a) {
                     PositionService.city = a.City;
                     PositionService.address = a.Address;
                 }
+                if (callback) callback();
             });
         }
-        catch (err) { }
+        catch (err) { if (callback) callback(); }
     },
     callService: function () {
         if (Service.isAuthenticated) {
-            //app.info("Posielam ...");
-            var s = Service.getState();
-
-            var posChanged = PositionService._lat != PositionService.lat && PositionService._lng != PositionService.lng; //true; //TEST!!! 
-
-            //aj nemame adresu, tak si ju vypytame !
-            if (!PositionService.address) {
-                PositionService.refreshAddress();
+            if (PositionService._lat != PositionService.lat && PositionService._lng != PositionService.lng) {
+                //zistime adresu !
+                PositionService.refreshAddress(function () { PositionService.positionChanged(); });
             }
-
-
-            if (posChanged) {
+            }
+    },
+    positionChanged: function () {
                 PositionService._lat = PositionService.lat;
                 PositionService._lng = PositionService.lng;
-
-
 
                 Globals.Position_Lat = PositionService.lat;
                 Globals.Position_Lng = PositionService.lng;
@@ -109,7 +91,9 @@ var PositionService = {
                 //if (differenceSec < Globals.GEOsendFreqSec) return;
 
                 //zistime rozdiel ! 
-                var Distancekm = Geo.getDistanceFromLatLonInKm(Globals.Position_LatPrev, Globals.Position_LngPrev, Globals.Position_Lat, Globals.Position_Lng);
+                var Distancekm = 0;
+                if (Globals.Position_LatPrev != 0 && Globals.Position_LngPrev!=0)
+                    Distancekm = Geo.getDistanceFromLatLonInKm(Globals.Position_LatPrev, Globals.Position_LngPrev, Globals.Position_Lat, Globals.Position_Lng);
                 var DistancekmCalculated = Bussiness.distanceCalculate(Distancekm);
                 var newdist = 0;
                 if (DistancekmCalculated) newdist = DistancekmCalculated;
@@ -121,9 +105,6 @@ var PositionService = {
                 Globals.Position_LatPrev = Globals.Position_Lat;
                 Globals.Position_LngPrev = Globals.Position_Lng;
 
-                //zistime adresu !
-                PositionService.refreshAddress();
-
                 Service.saveState("EventGEO");
 
                 //nastavime konstantu, kde
@@ -131,8 +112,5 @@ var PositionService = {
 
                 //vyvolame alerty, ak nejake treab
                 Bussiness.checkPosition();
-
-            }
-        }
     }
 }

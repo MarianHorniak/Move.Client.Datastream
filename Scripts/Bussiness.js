@@ -92,7 +92,7 @@
 
         //davame alert aj so zvukom !
         var content = Translator.Translate("Nastavte prosím stav tachometra.") + "<br/><button id=\"btnSetKM\"  data-route=\"actionsadd\" style=\"background-color:black;\" class=\"icon ico_submit\">&nbsp;</button>";
-        app.showNewsComplete(Translator.Translate("Stav tachometra"), MediaInternal.getNewsSoundFile("SetTacho"), "", 10000, content);
+        app.showNewsComplete(Translator.Translate("Tachometer"), MediaInternal.getNewsSoundFile("SetTacho"), "", 100000, content);
     },
 
     getDecimal: function (valueToTransform, digitsNumber)
@@ -109,7 +109,9 @@
 
     distanceCalculate: function(DistanceOriginal)
     {
-        if (!DistanceOriginal) return 0;
+        if(!DistanceOriginal) return 0;
+        if (DistanceOriginal == 0) return 0;
+
         var retDist = DistanceOriginal * Globals.distanceCoef_Default;
         
         var jp = Service.currentJP();
@@ -135,6 +137,7 @@
             }
         
         retDist = retDist.toFixed(2);
+        retDist = Math.abs(retDist);
         return retDist;
 
     },

@@ -230,8 +230,8 @@
                 IdDestination: jpkStepID,
                 IdDriver: Service.state.IdDriver ? Service.state.IdDriver:0,
                 IdVehicle: Service.state.IdVehicle ? Service.state.IdVehicle:0,
-                City: PositionService.getCity(),
-                Address: PositionService.getaddress(),
+                City: PositionService.city,
+                Address: PositionService.address,
                 Device : Globals.getDevice(),
                 CarStatus: jp.CarStatus,
                 RoadStatus: jp.RoadStatus,
@@ -270,16 +270,26 @@
             //aj nemame adresu, tak si ju vypytame !
             if (!dataEvent.Address) {
                 try {
-                    Map.geocode({ 'latLng': new google.maps.LatLng(PositionService.lat, PositionService.lng) }, function (a) {
+                    Map.geocode(dataEvent.Latitude, dataEvent.Longitude, function (a) {
                         if (a) {
                             dataEvent.City = a.City;
                             dataEvent.Address = a.Address;
                         }
+                        Service.sendDataEvent(dataEvent);
                     });
                 }
-                catch (err) { }
+                catch (err) {
+                    Service.sendDataEvent(dataEvent);
+                }
             }
-            Service.postData("DataEvent", dataEvent,
+            else
+                Service.sendDataEvent(dataEvent);
+        }
+        else
+            Service.startSendDataEvents();
+    },
+    sendDataEvent: function(dataEvent){
+        Service.postData("DataEvent", dataEvent,
                 function () {
                     try{
                         Service.state.Events.splice(0, 1);
@@ -297,9 +307,6 @@
                     app.setOnline();
                     Service.startSendDataEvents();
                 });
-        }
-        else
-            Service.startSendDataEvents();
     },
     getState: function () {
         if (!Service.state || !Service.state.url) {

@@ -518,10 +518,10 @@ h2
 
 #news {
     position:absolute;
-    top: 70px;
-    bottom: 70px;
-    left: 70px;
-    right: 70px;
+    top: 10%;
+    bottom: 20%;
+    left: 20%;
+    right: 20%;
     z-index:10000;
     padding:10px;
     background-color: #f00;
@@ -531,6 +531,7 @@ h2
 #newsTitle {
     /*font-size: xx-large;*/
     font-weight: bold;
+    display: inline-block;
 }
 
 
