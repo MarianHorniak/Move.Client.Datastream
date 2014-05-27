@@ -97,7 +97,7 @@
 
     getDecimal: function (valueToTransform, digitsNumber)
     {
-        var  myDec = 0.0;
+        var  myDec = 0;
         try{
             
             myDec = parseFloat(valueToTransform);

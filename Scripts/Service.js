@@ -15,11 +15,11 @@
 
         isOtherStepActivated:0, //ci sa nerobi krok mimo oficialnych JPK - destinations
 
-        TachometerPrevious: undefined,
-        Tachometer: undefined,
+        TachometerPrevious: 0,
+        Tachometer: 0,
         TachometerDateStored : undefined, //kedy bol nastaveny tachometer 
-        TachometerCount: undefined,
-        Distance:undefined, //vzdialenost medzi gps
+        TachometerCount: 0,
+        Distance:0, //vzdialenost medzi gps
 
         PetrolPrevious: undefined,
         Petrol: undefined,
