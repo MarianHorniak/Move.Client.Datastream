@@ -5,7 +5,7 @@ var PositionService = {
     speed: 0,
     _lat: 0,
     _lng: 0,
-    _speed: 0,
+    //_speed: 0,
     poolID: undefined,
     Accuracy: undefined,
     Heading: undefined,
@@ -115,6 +115,7 @@ var PositionService = {
                 Globals.Position_LngPrev = Globals.Position_Lng;
 
                 Service.saveState("EventGEO");
+                app.log("GEO : " + Globals.Position_Lat.toString() + " " + Globals.Position_Lng.toString());
 
                 //nastavime konstantu, kde
                 Globals.lastGEOSend = Date.now();
