@@ -30,6 +30,10 @@ var PositionService = {
                 PositionService.AltitudeAccuracy = position.coords.altitudeaccuracy;
 
                 PositionService.speed = position.coords.speed ? position.coords.speed * 3.6 : 0;
+
+                //zaokruhlenie rychlosti na nulu, uloha EPI
+                if (PositionService.speed < Globals.velocityMin) PositionService.speed = 0;
+
                 app.info(Translator.Translate("Presnosť pozície") + ": " + position.coords.accuracy + " m");
 
                 //TACHOMETER
