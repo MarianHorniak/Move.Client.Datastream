@@ -64,7 +64,6 @@
 
             var dev = '';
             try {
-
                 var devname = device.name;
                 var devphonegap = device.phonegap;
                 var devplatform = device.platform;

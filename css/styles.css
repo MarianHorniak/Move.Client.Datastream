@@ -622,6 +622,7 @@ button.ico_finish {
 
 button.ico_pause {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADkSURBVHhe7dw7DoJAAEBB8CyewPvfDdFQ+IvyItowk2y2ouBll0CxDADs3DRN18GzwzKz0rjMd96trnF8ecluPN39Xrfi2oVgS0aCRYJFgkUe+g8+PfytsEiwSLBIsEiwSLBIsOgfwY7zuLzcrR2nedz69vpNWWGRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJGDDQ8cbNiYYJFgkWCRYJFgkWCRYJFgkWCRYJFvyYU/o/yIYJFgkWCRYAC7MQxnPugsEC4QpPMAAAAASUVORK5CYII=') /*/img/ico_pause.png*/;
+    display:none;
     *background-image: url(/img/ico_pause.png); /* For IE 6 and 7 */
 }
 
