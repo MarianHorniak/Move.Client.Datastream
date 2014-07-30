@@ -57,6 +57,8 @@
         //tachometer - aky musi byt stary, aby sme ho neziadali pri povinnych akciahc ? 
         TachoValidSeconds : 300, 
 
+        MapRefreshSeconds : 15,
+
         getDevice: function () {
 
             if (Service.Device) return Service.Device;

@@ -88,7 +88,7 @@ var Map = {
     showPosition: function () {
         //refresh 
         if (!Map.timer) {
-            Map.timer = setInterval(function () { Map.Refresh(); }, 10000);
+            Map.timer = setInterval(function () { Map.Refresh(); }, Globals.MapRefreshSeconds*1000);
         };
         Map.testApi(function () { Map.showPositionInternal();  });
     },
