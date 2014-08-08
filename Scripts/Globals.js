@@ -71,8 +71,8 @@
             try {
                 //var devname = device.name;
                 //var devphonegap = device.phonegap;
-                try { dev = device.platform + "-"; } catch (err) { };
-                try { dev = dev + device.devuuid + "-"; } catch (err) { };
+                try { dev = "platform:" + device.platform + " "; } catch (err) { dev = "platform: "; };
+                try { dev = dev + "uuid:" + device.devuuid; } catch (err) { dev = dev + "uuid:"; };
                 //var devplatform = device.platform;
                 //var devuuid = device.uuid;
                 //var devver = device.version;
