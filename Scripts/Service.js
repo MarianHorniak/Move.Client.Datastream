@@ -234,7 +234,7 @@
                 IdVehicle: Service.state.IdVehicle ? Service.state.IdVehicle:0,
                 City: PositionService.city,
                 Address: PositionService.address,
-                Device : Service.Device,
+                Device : Globals.getDevice(),
                 CarStatus: jp.CarStatus,
                 RoadStatus: jp.RoadStatus,
                 TravelStatus: jp.TravelStatus,

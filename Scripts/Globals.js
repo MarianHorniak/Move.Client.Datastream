@@ -64,8 +64,9 @@
 
         getDevice: function () {
 
-            //if (Service.Device) return Service.Device;
-            //nie je este zadefinovane 
+            
+            //nie je device
+            if (!app.isDevice) return "not device";
 
             var dev = 'no value';
             try {
