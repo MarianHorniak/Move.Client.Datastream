@@ -462,6 +462,11 @@
     initialize: function () {
         app.log("app.initialize");
         app.log("app.isDevice: " + this.isDevice);
+        //nazov device
+        if (this.isDevice)
+            Service.Device = Globals.getDevice();
+        else
+            Service.Device = "not present";
         var self = this;
         this.pages = {};
         this.registerEvents();

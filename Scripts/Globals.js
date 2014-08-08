@@ -64,7 +64,7 @@
 
         getDevice: function () {
 
-            if (Service.Device) return Service.Device;
+            //if (Service.Device) return Service.Device;
             //nie je este zadefinovane 
 
             var dev = 'no value';
@@ -86,7 +86,7 @@
                 dev = 'not defined';
             }
 
-            Service.Device = dev;
+            //Service.Device = dev;
             return dev;
 
         },
