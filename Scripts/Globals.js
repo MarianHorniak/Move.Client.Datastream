@@ -67,7 +67,7 @@
             if (Service.Device) return Service.Device;
             //nie je este zadefinovane 
 
-            var dev = 'not defined';
+            var dev = 'no value';
             try {
                 //var devname = device.name;
                 //var devphonegap = device.phonegap;
