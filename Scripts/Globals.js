@@ -67,17 +67,19 @@
             if (Service.Device) return Service.Device;
             //nie je este zadefinovane 
 
-            var dev = '';
+            var dev = 'not defined';
             try {
-                var devname = device.name;
-                var devphonegap = device.phonegap;
-                var devplatform = device.platform;
-                var devuuid = device.uuid;
-                var devver = device.version;
+                //var devname = device.name;
+                //var devphonegap = device.phonegap;
+                try { dev = device.platform + "-"; } catch (err) { };
+                try { dev = dev + device.devuuid + "-"; } catch (err) { };
+                //var devplatform = device.platform;
+                //var devuuid = device.uuid;
+                //var devver = device.version;
                 //if (devname) dev += devname + "|1|";
                 //if (devphonegap) dev += devphonegap + "|2|";
-                if (devplatform) dev += devplatform + " ";
-                if (devuuid) dev += devuuid + " ";
+                //if (devplatform) dev += devplatform + " ";
+                //if (devuuid) dev += devuuid + " ";
                 //if (devver) dev += devver + "|5|";
             }
             catch (err) {
