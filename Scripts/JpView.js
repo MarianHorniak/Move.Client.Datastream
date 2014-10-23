@@ -42,7 +42,7 @@ var JpView = function () {
         //ak je aktivny JP, tak sleect nema vyznam
         if (jp.Active)
             $('#btnselectjp').hide();
-
+        
         app.waiting();
                 
         $('.jp-header').html(JpView.jpTemplate(jp));

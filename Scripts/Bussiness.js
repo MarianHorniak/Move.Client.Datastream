@@ -23,12 +23,22 @@
                     jp.Status = "Paused";
                 break;
             case "JPFinish":
-                var finishTrue = app.showConfirm("Ukončiť jazdný plán?", "Upozornenie", null, null);
-                if (!finishTrue)
+                //musi byt tacho !!! MHP
+                var differenceSec = (Date.now() - Service.state.TachometerDateStored) / 1000;
+                if (differenceSec > Globals.TachoValidSeconds) {
                     ret = false;
-                else
-                    if (jp)
-                        jp.Status = "Finish";
+                    this.mustSetTacho(action);
+                }
+
+                //nebolo breaknute tachom 
+                if (ret) {
+                    var finishTrue = app.showConfirm("Ukončiť jazdný plán?", "Upozornenie", null, null);
+                    if (!finishTrue)
+                        ret = false;
+                    else
+                        if (jp)
+                            jp.Status = "Finish";
+                }
                 break;
 
             case "JPKActive":
@@ -224,8 +234,8 @@
                 app.setJPKSpecial();
                 app.setFooter();
                 //idem do vyberu jp
+                // musim nastavit predtym !!! this.mustSetTacho(action);
                 app.route("selectjp");
-                //this.mustSetTacho(action);
                 break;
             case "JPKActive":
                 var jpk = Service.currentJPK(jp);
