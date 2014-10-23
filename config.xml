@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "sk.datastream.moveclient"
+        id          = "sk.datastream.movedatastreamclient"
         versionCode = "117"
         version     = "1.1.7">
  
@@ -24,7 +24,7 @@
   <icon src="img/phoneicon76.png"       gap:platform="ios" width="76"  height="76"  />-->
 
   <preference name="LoadUrlTimeoutValue" value="90000" />
-  <preference name="phonegap-version" value="3.4.0" />
+  <preference name="phonegap-version" value="3.6.0" />
   <preference name="DisallowOverscroll" value="true" />
   <preference name="exit-on-suspend" value="false" />
   <preference name="KeepRunning " value="true" />
